@@ -14,4 +14,4 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "src/ocr.py"]
+CMD ["python", "src/extractor.py"]
