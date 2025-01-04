@@ -37,13 +37,16 @@ def extract_text_from_directory(directory_path):
         print(f"디렉토리 '{directory_path}'가 존재하지 않습니다.")
         return
 
+    output_directory = '/app/result'
+    os.makedirs(output_directory, exist_ok=True)
+
     for filename in os.listdir(directory_path):
         file_path = os.path.join(directory_path, filename)
         if os.path.isfile(file_path):
             try:
                 text = extract_text_from_file(file_path)
                 if text:
-                    output_file = os.path.join(directory_path, f"{os.path.splitext(filename)[0]}.txt")
+                    output_file = os.path.join(output_directory, f"{os.path.splitext(filename)[0]}.txt")
                     with open(output_file, 'w', encoding='utf-8') as f:
                         f.write(text)
                     print(f"{filename}에서 텍스트를 추출하여 {output_file}에 저장했습니다.")
